@@ -15,9 +15,16 @@
 					  <a class="navbar-brand" href="/">Some Service</a>
 				</div>
 				<ul class="navbar-nav ml-0">
-					<li class="nav-item">
-						<a class="nav-link active text-nowrap" aria-current="page" href="/Account/Register">Регистрация / авторизация</a>
-					</li>
+                    @if (\Illuminate\Support\Facades\Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link active text-nowrap" aria-current="page" href="/Account/Logout">Выйти</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link active text-nowrap" aria-current="page" href="/Account/Register">Регистрация / авторизация</a>
+                        </li>
+                    @endif
+
 				</ul>
 		  </nav>
 	</header>

@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except($this->logoutUser());
     }
 
     public function loginView()
@@ -53,10 +53,19 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials))
+        {
             return redirect()->intended('/');
         }
 
         return redirect('/Account/Login')->with('error', 'Opps!');
+    }
+
+    public function logoutUser()
+    {
+        //die();
+        Auth::logout();
+
+        return redirect('/');
     }
 }

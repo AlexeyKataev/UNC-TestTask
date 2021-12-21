@@ -19,4 +19,6 @@ Route::get('/Account/Register', 'Auth\RegisterController@registerView');
 Route::post('/Account/Register', 'Auth\RegisterController@addUser')->name('accountRegister');
 
 Route::get('/Account/Login', 'Auth\LoginController@loginView');
-Route::post('/Account/Register', 'Auth\LoginController@authUser')->name('accountLogin');
+Route::post('/Account/Login', 'Auth\LoginController@authUser')->name('accountLogin');
+
+Route::get('/Account/Logout', 'Auth\LoginController@logoutUser')->name('logoutUser');
