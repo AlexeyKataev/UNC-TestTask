@@ -15,16 +15,19 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->integer('id', TRUE, TRUE);
-            $table->integer('role_id', FALSE, TRUE);
-            $table->foreign('role_id')->references('id')->on('user_roles');
-            /*$table->string('login', 50)->unique();*/
+            $table->integer('user_role_id', FALSE, TRUE);
+            $table->foreign('user_role_id')
+                ->references('id')
+                ->on('user_roles');
+            $table->string('api_access_token', 50)->unique()->nullable();
             $table->string('email', 100)->unique();
             $table->string('second_name', 50)->nullable();
             $table->string('first_name', 50);
             $table->string('middle_name', 50)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
-            $table->boolean('consent_to_the_processing_of_personal_data')->default(FALSE);
+            $table->boolean('consent_to_the_processing_of_personal_data')
+                ->default(FALSE);
             $table->rememberToken();
             $table->timestamps();
             $table->engine = "INNODB";

@@ -17,6 +17,6 @@
 		</div>
 		<button type="submit" class="btn btn-primary">Войти</button>
 	</form>
-	<a href="/Account/Register" class="link-primary">У меня ещё нет учётной записи	</a>
+	<a href="/Account/Register" class="link-primary">У меня ещё нет учётной записи</a>
 </main>
 @endsection

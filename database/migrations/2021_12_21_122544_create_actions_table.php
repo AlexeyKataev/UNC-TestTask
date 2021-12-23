@@ -15,7 +15,15 @@ class CreateActionsTable extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->integer('id', TRUE, TRUE);
+            $table->integer('user_creator_id', FALSE, TRUE);
+            $table->foreign('user_creator_id')
+                ->references('id')
+                ->on('users');
             $table->string('title', 255)->comment('Заголовок');
+            $table->text('description')->nullable()->comment('Описание акции');
+            $table->boolean('is_private')->
+                comment('Скрыта ли акция от всех пользователей, кроме опред. списка')
+                ->default(TRUE);
             $table->date('date_start')->comment('Дата начала');
             $table->date('date_end')->comment('Дата окончания');
             $table->timestamps();

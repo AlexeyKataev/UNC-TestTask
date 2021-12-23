@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\LoginSource;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,26 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials))
         {
+            $nowTms = new \DateTime();
+            $nowTmsFormat = $nowTms->format('Y-m-d H:i:s');
+
+            $userAgent = 'site';
+
+            if (strripos($request->userAgent(), 'iPhone') != FALSE)
+            {
+                $userAgent = 'iphone';
+            }
+            else if (strripos($request->userAgent(), 'android') != FALSE)
+            {
+                $userAgent = 'android';
+            }
+
+            LoginSource::create([
+                'user_id' => Auth::id(),
+                'tms' => $nowTmsFormat,
+                'source' => $userAgent,
+            ]);
+
             return redirect()->intended('/');
         }
 
@@ -63,7 +84,6 @@ class LoginController extends Controller
 
     public function logoutUser()
     {
-        //die();
         Auth::logout();
 
         return redirect('/');
