@@ -49,7 +49,7 @@ class EditActionController extends Controller
                 'date_end' => $request->date_end,
             ];
 
-            Action::find($request->id)->update($editAction);
+            $originalEditAction->update($editAction);
 
             return redirect('/Action/Actions');
         }

@@ -55,7 +55,7 @@ class EditMailTemplateController extends Controller
             'is_pinned' => $is_pinned,
         ];
 
-        MailTemplate::find($request->id)->update($editMailTemplate);
+        $originalMailTemplate->update($editMailTemplate);
 
         return redirect('/MailTemplate/MailTemplates');
     }

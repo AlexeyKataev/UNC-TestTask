@@ -37,6 +37,6 @@ Route::get('/MailTemplate/MailTemplates', 'MailTemplate\MailTemplatesController@
 Route::get('/MailTemplate/AddMailTemplate', 'MailTemplate\AddMailTemplateController@addMailTemplateView');
 Route::post('/MailTemplate/AddMailTemplate', 'MailTemplate\AddMailTemplateController@addMailTemplate')->name('addMailTemplate');
 Route::get('/MailTemplate/EditMailTemplate/{id}', 'MailTemplate\EditMailTemplateController@editMailTemplateView');
-Route::put('/MailTemplate/EditMailTemplate', 'MailTemplate\AddMailTemplateController@addMailTemplate')->name('editMailTemplate');
+Route::put('/MailTemplate/EditMailTemplate', 'MailTemplate\EditMailTemplateController@editMailTemplate')->name('editMailTemplate');
 
 
