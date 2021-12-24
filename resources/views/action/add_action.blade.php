@@ -8,7 +8,6 @@
             </a>
             Добавить акцию
         </h1>
-
         <form method="post" action="{{ route('addAction') }}" class="mb-3" onload="datePlannedSend()">
             {{ csrf_field() }}
             <div class="mb-3">

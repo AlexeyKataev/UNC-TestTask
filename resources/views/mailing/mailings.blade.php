@@ -3,7 +3,6 @@
 @section('content')
     <main class="container">
         <h1 class="mt-5 mb-5 display-6">Email-рассылки</h1>
-
         <div class="row">
             <div class="col-sm-6">
                 <div class="card mb-3">
@@ -44,7 +43,7 @@
                 <th>Сформированы ли письма</th>
                 <th>Дата создан.</th>
                 <th>Дата изменен.</th>
-                <th class="justify-content-center" style="min-width: 50px;"></th>
+                <th class="justify-content-center" style="min-width: 70px; max-width: 70px;"></th>
             </tr>
             </thead>
             <tbody>
@@ -56,7 +55,7 @@
                     <tr>
                         <th></th>
                         <td>Нет запланированных рассылок</td>
-                        <td class="pagination justify-content-center">
+                        <td>
                             <div class="dropdown">
                                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots"></i>

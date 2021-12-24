@@ -22,11 +22,11 @@
                         Администрирование
                     </button>
                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
-                        <li><a class="dropdown-item" href="/Account/Accounts">Управление пользователями</a></li>
                         <li><a class="dropdown-item" href="/Action/Actions">Управление акциями</a></li>
                         <li><a class="dropdown-item" href="/Mailing/Mailings">Управление email-рассылками</a></li>
+                        <li><a class="dropdown-item" href="/MailTemplate/MailTemplates">Управление шаблонами писем</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" href="/Account/Accounts">Управление пользователями</a></li>
                     </ul>
                 </div>
                 @endif

@@ -8,7 +8,6 @@
             </a>
             Изменить акцию
         </h1>
-
         <form method="post" action="{{ route('editAction') }}" class="mb-3">
             {{ csrf_field() }}
             {{ method_field('put') }}

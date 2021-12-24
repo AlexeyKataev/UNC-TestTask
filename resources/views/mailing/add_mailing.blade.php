@@ -8,7 +8,6 @@
         </a>
         Добавить email-рассылку
     </h1>
-
     <form method="post" action="{{ route('addMailing') }}" class="mb-3" onload="datePlannedSend()">
         {{ csrf_field() }}
         <div class="mb-3">
@@ -30,8 +29,8 @@
             <select name="action_id" class="form-select" id="inputAction" aria-describedby="actionHelp">
             </select>
             <div id="actionHelp" class="form-text mb-1">Обязательное поле</div>
-            <a href="/" role="button" class="btn btn-light btn-sm">Добавить акцию</a>
-            <a href="/" role="button" class="btn btn-light btn-sm">Список акций</a>
+            <a href="/Action/AddAction" role="button" class="btn btn-light btn-sm">Добавить акцию</a>
+            <a href="/Action/Actions" role="button" class="btn btn-light btn-sm">Список акций</a>
         </div>
         <div class="mb-3">
             <label for="inputTemplate" class="form-label">

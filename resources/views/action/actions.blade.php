@@ -44,7 +44,7 @@
                 <th>Персональная</th>
                 <th>Дата создан.</th>
                 <th>Дата изменен.</th>
-                <th class="justify-content-center" style="min-width: 50px;"></th>
+                <th class="justify-content-center" style="min-width: 70px; max-width: 70px;"></th>
             </tr>
             </thead>
             <tbody>
@@ -63,14 +63,14 @@
                             <td>{{ @$action->date_end }}</td>
                             <td>
                                 @if($action->is_private)
-                                    Да
+                                    <p class="text-success">Да</p>
                                 @else
-                                    Нет
+                                    <p class="text-danger">Нет</p>
                                 @endif
                             </td>
                             <td>{{ @$action->created_at }}</td>
                             <td>{{ @$action->updated_at }}</td>
-                            <td class="pagination justify-content-center">
+                            <td>
                                 <div class="dropdown">
                                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-three-dots"></i>

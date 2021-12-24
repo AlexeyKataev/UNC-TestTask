@@ -14,7 +14,7 @@
                     <th>Email</th>
                     <th>Дата регистр.</th>
                     <th>Дата изменен.</th>
-                    <th></th>
+                    <th class="justify-content-center" style="min-width: 70px; max-width: 70px;"></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@
                         <td>{{ @$user->email }}</td>
                         <td>{{ @$user->created_at }}</td>
                         <td>{{ @$user->updated_at }}</td>
-                        <td class="pagination justify-content-center">
+                        <td>
                             <div class="dropdown">
                                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots"></i>
