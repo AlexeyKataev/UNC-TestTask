@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Action;
 
-use App\Action;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Action;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class AddActionController extends Controller
+class EditActionController extends Controller
 {
-    public function addActionView()
+    public function editActionView(Request $request, int $id)
     {
-        return view('action.add_action');
+        $action = DB::table('actions')->find($id);
+
+        return view('action.edit_action', ['action' => $action]);
     }
 
-    public function addAction(Request $request)
+    public function editAction(Request $request)
     {
         $this->validate($request, [
             'title' => 'required|string|max:255',
@@ -37,18 +38,22 @@ class AddActionController extends Controller
                 $is_private = TRUE;
             }
 
-            Action::create([
-                'user_creator_id' => Auth::id(),
+            $originalEditAction = Action::find($request->id);
+
+            $editAction = [
+                'user_creator_id' => $originalEditAction->user_creator_id,
                 'title' => $request->title,
                 'description' => $request->description,
                 'is_private' => $is_private,
                 'date_start' => $request->date_start,
                 'date_end' => $request->date_end,
-            ]);
+            ];
+
+            Action::find($request->id)->update($editAction);
 
             return redirect('/Action/Actions');
         }
 
-        return redirect('/Action/AddAction');
+        return redirect('/Action/EditAction/'.$request->id);
     }
 }

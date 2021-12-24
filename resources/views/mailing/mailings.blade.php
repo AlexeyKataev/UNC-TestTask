@@ -51,7 +51,6 @@
                 @if(count($mailings) == 0)
                     <tr>
                         <td colspan="9" class="text-center">Нет запланированных рассылок</td>
-
                     </tr>
                 @else
                     <tr>

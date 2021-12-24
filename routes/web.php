@@ -35,6 +35,8 @@ Route::post('/Mailing/AddMailing', 'Mailing\AddMailingController@addMailing')->n
 Route::get('/Action/Actions', 'Action\ActionsController@actionsView');
 
 Route::get('/Action/AddAction', 'Action\AddActionController@addActionView');
-Route::post('/Action/AddAction', 'Action\AddActionController@addActionView')->name('addAction');
+Route::post('/Action/AddAction', 'Action\AddActionController@addAction')->name('addAction');
+Route::get('/Action/EditAction/{id}', 'Action\EditActionController@editActionView');
+Route::put('/Action/EditAction/', 'Action\EditActionController@editAction')->name('editAction');
 
 

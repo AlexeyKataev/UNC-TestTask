@@ -8,8 +8,8 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Активные акции</h5>
-                        <p class="card-text mb-0">Публично доступные: $count</p>
-                        <p class="card-text">Персональные: $count</p>
+                        <p class="card-text mb-0">Публично доступные: {{ $activePublicActionsCount }}</p>
+                        <p class="card-text">Персональные: {{ $activePrivateActionsCount }}</p>
                         <a href="/Action/AddAction" class="btn btn-primary">
                             <i class="bi bi-plus-square-dotted mr-3"></i>
                             Добавить акцию
@@ -21,8 +21,8 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">История акций</h5>
-                        <p class="card-text mb-0">За всё время проведено акций: 10</p>
-                        <p class="card-text">Публичные / персональные: 7 / 3</p>
+                        <p class="card-text mb-0">Завершённые акции: {{ $stoppedActionsCount }}</p>
+                        <p class="card-text">Публичные / персональные: {{ $stoppedPublicActionsCount }} / {{ $stoppedPrivateActionsCount }}</p>
                         <a href="#" class="btn btn-outline-primary">
                             <i class="bi bi-card-list"></i>
                             Перейти к истории акций
@@ -48,7 +48,41 @@
             </tr>
             </thead>
             <tbody>
-
+                @if(count($actions) == 0)
+                    <tr>
+                        <td colspan="10" class="text-center">Нет активных акций</td>
+                    </tr>
+                @else
+                    @foreach($actions as $action)
+                        <tr>
+                            <th>{{ @$action->id }}</th>
+                            <td>{{ @$action->title }}</td>
+                            <td>{{ @$action->description }}</td>
+                            <td>{{ @$action->user_creator->second_name }} {{ @$action->user_creator->first_name }}</td>
+                            <td>{{ @$action->date_start }}</td>
+                            <td>{{ @$action->date_end }}</td>
+                            <td>
+                                @if($action->is_private)
+                                    Да
+                                @else
+                                    Нет
+                                @endif
+                            </td>
+                            <td>{{ @$action->created_at }}</td>
+                            <td>{{ @$action->updated_at }}</td>
+                            <td class="pagination justify-content-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
+                                        <li><a class="dropdown-item" href="/Action/EditAction/{{ @$action->id }}">Изменить</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </main>

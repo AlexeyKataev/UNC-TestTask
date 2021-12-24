@@ -6,23 +6,29 @@
             <a href="/Action/Actions" role="button" class="btn btn-light">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            Добавить акцию
+            Изменить акцию
         </h1>
 
-        <form method="post" action="{{ route('addAction') }}" class="mb-3" onload="datePlannedSend()">
+        <form method="post" action="{{ route('editAction') }}" class="mb-3">
             {{ csrf_field() }}
+            {{ method_field('put') }}
+            <input name="id" type="hidden" value="{{ @$action->id }}"/>
             <div class="mb-3">
                 <label for="inputTitle" class="form-label">Заголовок</label>
-                <input name="title" type="text" class="form-control" id="inputTitle" aria-describedby="titleHelp" required>
+                <input name="title" type="text" class="form-control" id="inputTitle" aria-describedby="titleHelp" value="{{ @$action->title }}" required>
                 <div id="titleHelp" class="form-text">Обязательное поле</div>
             </div>
             <div class="mb-3">
                 <label for="inputDescription" class="form-label">Описание</label>
-                <input name="description" type="text" class="form-control" id="inputDescription" aria-describedby="descriptionHelp" required>
+                <input name="description" type="text" class="form-control" id="inputDescription" aria-describedby="descriptionHelp" value="{{ @$action->description }}" required>
             </div>
             <div class="mb-3">
                 <div class="form-check form-switch" aria-describedby="isPrivateHelp">
-                    <input name="is_private" class="form-check-input" type="checkbox" id="isPrivateCheck" checked>
+                    @if($action->is_private)
+                        <input name="is_private" class="form-check-input" type="checkbox" id="isPrivateCheck" checked>
+                    @else
+                        <input name="is_private" class="form-check-input" type="checkbox" id="isPrivateCheck">
+                    @endif
                     <label class="form-check-label" for="isPrivateCheck">Персональная акция</label>
                 </div>
                 <div id="isPrivateHelp" class="form-text">Персональная акция доступна только пользователям соответствующей категории, получившим письмо в рамках массовой рассылки</div>
@@ -39,16 +45,13 @@
             </div>
             <button type="submit" class="btn btn-primary">
                 <i class="bi bi-plus-square-dotted mr-3"></i>
-                Добавить акцию
+                Изменить акцию
             </button>
             <script>
-                datePlannedSend();
-                function datePlannedSend() {
-                    let start = new Date();
-                    start.setDate(start.getDate() + 1);
-
-                    let end = new Date();
-                    end.setDate(end.getDate() + 2);
+                date();
+                function date() {
+                    let start = new Date('{{ @$action->date_start }}T00:00');
+                    let end = new Date('{{ @$action->date_end }}T00:00');
 
                     start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
                     end.setMinutes(end.getMinutes() - end.getTimezoneOffset());
