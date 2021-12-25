@@ -27,7 +27,6 @@
                 <th>Id</th>
                 <th>Текст</th>
                 <th>Для акций</th>
-                <th>Изменяемое</th>
                 <th>Закреплённое</th>
                 <th>Архивное</th>
                 <th>Дата создан.</th>
@@ -50,13 +49,6 @@
                     </td>
                     <td>
                         @if($mail->is_action_mail)
-                            <p class="text-success">Да</p>
-                        @else
-                            <p class="text-danger">Нет</p>
-                        @endif
-                    </td>
-                    <td>
-                        @if($mail->is_editable)
                             <p class="text-success">Да</p>
                         @else
                             <p class="text-danger">Нет</p>

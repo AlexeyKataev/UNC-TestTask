@@ -41,9 +41,11 @@
                 <th>Акция</th>
                 <th>Охват</th>
                 <th>Сформированы ли письма</th>
+                <th>Старт рассылки</th>
+                <th>Завершение рассылки</th>
                 <th>Дата создан.</th>
                 <th>Дата изменен.</th>
-                <th class="justify-content-center" style="min-width: 70px; max-width: 70px;"></th>
+                <th style="min-width: 70px; max-width: 70px;"></th>
             </tr>
             </thead>
             <tbody>
@@ -52,24 +54,46 @@
                         <td colspan="9" class="text-center">Нет запланированных рассылок</td>
                     </tr>
                 @else
-                    <tr>
-                        <th></th>
-                        <td>Нет запланированных рассылок</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
-                                    <li><a class="dropdown-item" href="/Account/Accounts">Изменить</a></li>
-                                    <li><a class="dropdown-item" href="/Account/Activity/{{ @$user->id }}">История активности</a></li>
-                                    <li><a class="dropdown-item" href="/Action/Actions">Заблокировать</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item text-light bg-danger" href="#">Удалить</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach($mailings as $mail)
+                        <tr>
+                            <th>{{ @$mail->id }}</th>
+                            <td>{{ @$mail->mail_template->text }}</td>
+                            <td>{{ @$mail->user_creator->second_name }} {{ @$mail->user_creator->first_name }} </td>
+                            <td>
+                                @if($mail->action_id == null)
+                                    Без акции
+                                @else
+                                    {{ @$mail->action->title }}
+                                @endif
+                            </td>
+                            <td></td>
+                            <td>
+                                @if($mail->queue_email_formed)
+                                    Очередь на рассылку сформирована
+                                @else
+                                    Очередь на рассылку не сформирована
+                                @endif
+                            </td>
+                            <td>{{ @$mail->date_planned_start_send }}</td>
+                            <td>{{ @$mail->date_planned_end_send }}</td>
+                            <td>{{ @$mail->created_at }}</td>
+                            <td>{{ @$mail->updated_at }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
+                                        <li><a class="dropdown-item" href="/Account/Accounts">Изменить</a></li>
+                                        <li><a class="dropdown-item" href="/Account/Activity/{{ @$user->id }}">История активности</a></li>
+                                        <li><a class="dropdown-item" href="/Action/Actions">Заблокировать</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-light bg-danger" href="#">Удалить</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 @endif
             </tbody>
         </table>

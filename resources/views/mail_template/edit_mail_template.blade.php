@@ -25,14 +25,6 @@
                 @endif
                 <label class="form-check-label" for="isActionCheck">Сделать текстом для акций</label>
             </div>
-            <div class="form-check form-switch" aria-describedby="isEditableHelp">
-                @if($mailTemplate->is_editable)
-                    <input name="is_editable" class="form-check-input" type="checkbox" id="isEditableCheck" checked>
-                @else
-                    <input name="is_editable" class="form-check-input" type="checkbox" id="isEditableCheck" >
-                @endif
-                <label class="form-check-label" for="isEditableCheck">Разрешить редактирование после создания</label>
-            </div>
             <div class="form-check form-switch" aria-describedby="isPinnedHelp">
                 @if($mailTemplate->is_pinned)
                     <input name="is_pinned" class="form-check-input" type="checkbox" id="isPinnedCheck" checked>

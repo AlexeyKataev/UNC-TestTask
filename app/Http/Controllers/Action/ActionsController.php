@@ -16,6 +16,7 @@ class ActionsController extends Controller
 
         $actions = Action::with('user_creator')
             ->where('date_end', '>=', $nowTmsFormat)
+            ->orderByDesc('id')
             ->get();
 
         return view('action.actions', [

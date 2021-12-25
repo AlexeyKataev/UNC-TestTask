@@ -46,7 +46,7 @@ class AddMailTemplateController extends Controller
         MailTemplate::create([
             'text' => $request->text,
             'is_action_mail' => $is_action_mail,
-            'is_editable' => $is_editable,
+            'is_editable' => TRUE,
             'is_archival' => $is_archival,
             'is_pinned' => $is_pinned,
         ]);

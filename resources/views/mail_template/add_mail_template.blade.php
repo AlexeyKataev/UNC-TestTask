@@ -19,10 +19,10 @@
                 <input name="is_action_mail" class="form-check-input" type="checkbox" id="isActionCheck" checked>
                 <label class="form-check-label" for="isActionCheck">Сделать текстом для акций</label>
             </div>
-            <div class="form-check form-switch" aria-describedby="isEditableHelp">
+            <!--<div class="form-check form-switch" aria-describedby="isEditableHelp">
                 <input name="is_editable" class="form-check-input" type="checkbox" id="isEditableCheck" checked>
                 <label class="form-check-label" for="isEditableCheck">Разрешить редактирование после создания</label>
-            </div>
+            </div>--->
             <div class="form-check form-switch" aria-describedby="isPinnedHelp">
                 <input name="is_pinned" class="form-check-input" type="checkbox" id="isPinnedCheck">
                 <label class="form-check-label" for="isPinnedCheck">Добавить в избранное</label>
