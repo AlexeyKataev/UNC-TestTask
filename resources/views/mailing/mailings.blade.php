@@ -51,7 +51,7 @@
             <tbody>
                 @if(count($mailings) == 0)
                     <tr>
-                        <td colspan="9" class="text-center">Нет запланированных рассылок</td>
+                        <td colspan="11" class="text-center">Нет запланированных рассылок</td>
                     </tr>
                 @else
                     @foreach($mailings as $mail)
@@ -92,11 +92,7 @@
                                         <i class="bi bi-three-dots"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
-                                        <li><a class="dropdown-item" href="/Account/Accounts">Изменить</a></li>
-                                        <li><a class="dropdown-item" href="/Account/Activity/{{ @$user->id }}">История активности</a></li>
-                                        <li><a class="dropdown-item" href="/Action/Actions">Заблокировать</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item text-light bg-danger" href="#">Удалить</a></li>
+                                        <li><a class="dropdown-item text-light bg-danger" href="/Account/Activity/{{ @$mail->id }}">Удалить</a></li>
                                     </ul>
                                 </div>
                             </td>

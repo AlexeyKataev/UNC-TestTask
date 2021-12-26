@@ -21,6 +21,8 @@ class CreateUserActionsTable extends Migration
                   is_accept boolean DEFAULT false,
                   date_invite TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                   date_accept TIMESTAMP,
+                  created_at TIMESTAMP NULL DEFAULT NULL,
+                  updated_at TIMESTAMP NULL DEFAULT NULL,
                   PRIMARY KEY (user_id, action_id),
                   CONSTRAINT FK_user_actions_actions_id FOREIGN KEY (action_id)
                   REFERENCES actions (id) ON DELETE RESTRICT ON UPDATE RESTRICT,

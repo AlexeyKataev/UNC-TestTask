@@ -47,7 +47,7 @@
             </label>
             <select name="without_action_id" class="form-select" id="inputWithoutAction" aria-describedby="withoutActionHelp">
                 <option value="0">Не указано</option>
-                @foreach($actions as $action)
+                @foreach($withoutActions as $action)
                     <option value="{{ $action->id  }}">
                         @if($action->is_private)
                             [Персональная]
