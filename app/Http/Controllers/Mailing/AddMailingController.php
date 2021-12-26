@@ -56,16 +56,32 @@ class AddMailingController extends Controller
             )
             {
                 $action_id = null;
+                $user_reach = null;
 
                 if ($request->action_id != 0)
                 {
                     $action_id = $request->action_id;
                 }
 
+                if ($request->user_category_id == 1)
+                {
+                    $user_reach = \App\Classes\Mailing\MailRecipient::getCatACount();
+                }
+                else if ($request->user_category_id == 2)
+                {
+                    $user_reach = \App\Classes\Mailing\MailRecipient::getCatBCount();
+                }
+                else if ($request->user_category_id == 3)
+                {
+                    $user_reach = \App\Classes\Mailing\MailRecipient::getCatCCount($request->without_action_id);
+                }
+
                 QueueMailings::create([
+                    'user_category_id' => $request->user_category_id,
                     'mail_template_id' => $request->mail_template_id,
                     'user_creator_id' => Auth::id(),
                     'action_id' => $action_id,
+                    'user_reach' => $user_reach,
                     'date_planned_start_send' => $request->date_planned_start_send,
                     'date_planned_end_send' => $request->date_planned_end_send,
                     'queue_email_formed' => FALSE,

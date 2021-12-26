@@ -66,12 +66,20 @@
                                     {{ @$mail->action->title }}
                                 @endif
                             </td>
-                            <td></td>
+                            <td>
+                                @if($mail->user_category_id == 1)
+                                    [Кат. A] {{ @$mail->user_reach }} пользователей
+                                @elseif($mail->user_category_id == 2)
+                                    [Кат. B] {{ @$mail->user_reach }} пользователей
+                                @elseif($mail->user_category_id == 3)
+                                    [Кат. C] {{ @$mail->user_reach }} пользователей
+                                @endif
+                            </td>
                             <td>
                                 @if($mail->queue_email_formed)
-                                    Очередь на рассылку сформирована
+                                    <p class="text-success">Очередь на рассылку сформирована</p>
                                 @else
-                                    Очередь на рассылку не сформирована
+                                    <p class="text-danger">Очередь на рассылку не сформирована</p>
                                 @endif
                             </td>
                             <td>{{ @$mail->date_planned_start_send }}</td>

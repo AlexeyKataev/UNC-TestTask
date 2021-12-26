@@ -42,6 +42,23 @@
             <a href="/Action/Actions" role="button" class="btn btn-light btn-sm">Список акций</a>
         </div>
         <div class="mb-3">
+            <label for="inputWithoutAction" class="form-label">
+                Акция, во время которой пользователь был неактивен
+            </label>
+            <select name="without_action_id" class="form-select" id="inputWithoutAction" aria-describedby="withoutActionHelp">
+                <option value="0">Не указано</option>
+                @foreach($actions as $action)
+                    <option value="{{ $action->id  }}">
+                        @if($action->is_private)
+                            [Персональная]
+                        @endif
+                        "{{ @$action->title }}". {{ @$action->description }}
+                    </option>
+                @endforeach
+            </select>
+            <div id="withoutActionHelp" class="form-text">Обязательное поле при категории C</div>
+        </div>
+        <div class="mb-3">
             <label for="inputTemplate" class="form-label">
                 Шаблон письма
             </label>

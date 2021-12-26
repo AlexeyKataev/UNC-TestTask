@@ -15,6 +15,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\UserRole');
     }
 
+    public function login_sources()
+    {
+        return $this->hasMany('App\LoginSource');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,6 +28,7 @@ class User extends Authenticatable
     protected $fillable = [
         'user_role_id',
         'user_role',
+        'login_sources',
         'email',
         'second_name',
         'first_name',
