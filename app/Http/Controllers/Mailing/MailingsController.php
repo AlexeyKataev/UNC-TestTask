@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\QueueMailings;
 use Illuminate\Contracts\Mail\MailQueue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MailingsController extends Controller
 {
     public function mailingsView()
     {
+        if (!Auth::check()) { abort(401); }
+        else if (!in_array(Auth::user()->user_role_id, [1, 2])) { abort(403); }
+
         $nowTms = new \DateTime();
         $nowTmsFormat = $nowTms->format('Y-m-d H:i:s');
 
@@ -22,17 +26,7 @@ class MailingsController extends Controller
             ->orderByDesc('id')
             ->get();
 
-        $catACount = \App\Classes\Mailing\MailRecipient::getCatACount();
-        $catBCount = \App\Classes\Mailing\MailRecipient::getCatBCount();
-        $catCCount = \App\Classes\Mailing\MailRecipient::getCatCCount(1);
-
-        //dd($catBCount);
-        //dd($mailings);
-
         return view('mailing.mailings', [
-            'catACount' => $catACount,
-            'catBCount' => $catBCount,
-            'catCCount' => $catCCount,
             'mailings' => $mailings,
         ]);
     }

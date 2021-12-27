@@ -19,6 +19,9 @@ class AddMailingController extends Controller
 {
     public function addMailingView()
     {
+        if (!Auth::check()) { abort(401); }
+        else if (!in_array(Auth::user()->user_role_id, [1, 2])) { abort(403); }
+
         $nowTms = new \DateTime();
         $nowTmsFormat = $nowTms->format('Y-m-d H:i:s');
 
@@ -46,6 +49,9 @@ class AddMailingController extends Controller
 
     public function addMailing(Request $request)
     {
+        if (!Auth::check()) { abort(401); }
+        else if (!in_array(Auth::user()->user_role_id, [1, 2])) { abort(403); }
+
         $this->validate($request, [
             'user_category_id' => 'required|integer',
             'mail_template_id' => 'required|integer',
@@ -189,15 +195,5 @@ class AddMailingController extends Controller
         }
 
         return redirect('/Mailing/AddMailing');
-    }
-
-    private function addEmailQueue()
-    {
-
-    }
-
-    private function calcSendMailInterval(string $tmsStart, string $tmsEnd, string $mailCount)
-    {
-
     }
 }

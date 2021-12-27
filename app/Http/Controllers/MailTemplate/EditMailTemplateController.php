@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Action;
 use App\MailTemplate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EditMailTemplateController extends Controller
 {
     public function editMailTemplateView(int $id)
     {
+        if (!Auth::check()) { abort(401); }
+        else if (!in_array(Auth::user()->user_role_id, [1, 2])) { abort(403); }
+
         $mailTemplate = DB::table('mail_templates')->find($id);
 
         return view('mail_template.edit_mail_template', ['mailTemplate' => $mailTemplate]);
@@ -19,6 +23,9 @@ class EditMailTemplateController extends Controller
 
     public function editMailTemplate(Request $request)
     {
+        if (!Auth::check()) { abort(401); }
+        else if (!in_array(Auth::user()->user_role_id, [1, 2])) { abort(403); }
+
         $this->validate($request, [
             'text' => 'required|string',
         ]);
