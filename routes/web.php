@@ -24,6 +24,7 @@ Route::get('/Account/Accounts', 'Account\AccountsController@accountsView');
 Route::get('/Account/Activity/{id}', 'Account\ActivityController@activityView');
 
 Route::get('/Mailing/Mailings', 'Mailing\MailingsController@mailingsView');
+Route::get('/Mailing/HistoryMailings', 'Mailing\HistoryMailingsController@historyMailingsView');
 Route::get('/Mailing/AddMailing', 'Mailing\AddMailingController@addMailingView');
 Route::post('/Mailing/AddMailing', 'Mailing\AddMailingController@addMailing')->name('addMailing');
 
