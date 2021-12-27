@@ -87,12 +87,35 @@
                             <td>{{ @$mail->created_at }}</td>
                             <td>{{ @$mail->updated_at }}</td>
                             <td>
+                                <div class="modal fade" id="stopMailing{{ @$mail->id }}Modal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form method="post" action="{{ route('stopMailing') }}" class="modal-content">
+                                            {{ csrf_field() }}
+                                            {{ method_field('put') }}
+                                            <input type="hidden" name="id" value="{{ @$mail->id }}">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Остановка рассылки Id {{ @$mail->id }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Данную операцию в дальнейшем невозможно отменить
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Закрыть</button>
+                                                <button type="submit" class="btn btn-danger">Остановить рассылку</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="dropdown">
                                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-three-dots"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
-                                        <li><a class="dropdown-item text-light bg-danger" href="/Account/Activity/{{ @$mail->id }}">Удалить</a></li>
+                                        <li>
+                                            <a class="dropdown-item text-light bg-danger" role="button" data-bs-toggle="modal" data-bs-target="#stopMailing{{ @$mail->id }}Modal">Остановить</a>
+
+                                        </li>
                                     </ul>
                                 </div>
                             </td>

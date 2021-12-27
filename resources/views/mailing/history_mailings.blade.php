@@ -6,7 +6,7 @@
             <a href="/Mailing/Mailings" role="button" class="btn btn-light">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            Завершённые mmail-рассылки
+            Завершённые email-рассылки
         </h1>
         <h3 class="mt-3 mb-3">Все прошедшие рассылки</h3>
         <table class="table table-sm table-bordered">
