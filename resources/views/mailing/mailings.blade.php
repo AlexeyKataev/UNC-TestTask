@@ -8,7 +8,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Запланировано</h5>
-                        <p class="card-text mb-0">На сегодня запланировано рассылок: 1</p>
+                        <p class="card-text mb-0">На сегодня запланировано рассылок: 1FDNJKNFDKJNKDJF</p>
                         <p class="card-text">Будет охвачено пользователей: 114</p>
                         <a href="/Mailing/AddMailing" class="btn btn-primary">
                             <i class="bi bi-plus-square-dotted mr-3"></i>
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <h3 class="mt-3 mb-3">Запланированно на сегодня</h3>
+        <h3 class="mt-3 mb-3">Запланированно</h3>
         <table class="table table-sm table-bordered">
             <thead class="table-light">
             <tr>

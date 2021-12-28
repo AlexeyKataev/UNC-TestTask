@@ -40,7 +40,6 @@
                             <a class="nav-link active text-nowrap" aria-current="page" href="/Account/Register">Регистрация / авторизация</a>
                         </li>
                     @endif
-
 				</ul>
 		  </nav>
 	</header>
