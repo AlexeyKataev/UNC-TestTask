@@ -14,6 +14,14 @@ use Illuminate\Http\Request;
 */
 
 /*
+ * Для использования API в отправляемый к нему запрос должен содержать
+ * заголовок "token", значение для которого нужно скопировать из админ. панели,
+ * доступ к которой можно получить через admin / password.
+ *
+ * Выбранному пользователю нужно в меню редактирования сгенерировать token.
+ */
+
+/*
  * Получить активные в данный момент акции
  */
 
@@ -32,7 +40,7 @@ Route::get('/Action/Actions/HistoryActions', 'API\Action\ActionsController@histo
 Route::get('/Action/Actions', 'API\Action\ActionsController@actions');
 
 /*
- * Получить щаблоны для рассылки
+ * Получить шаблоны для рассылки
  */
 
 
@@ -60,7 +68,17 @@ Route::get('/Mailing/Mailings/HistoryMailings', 'API\Mailing\MailingsController@
 Route::get('/Mailing/Mailings/Mailings', 'API\Mailing\MailingsController@mailings');
 
 /*
- * Создать рассылку
+ * Создать рассылку.
+ *
+ * Пример входного JSON:
+ *
+ *  {
+ *    "user_category_id": 1,
+ *    "mail_template_id": 2,
+ *    "action_id": null,
+ *    "date_planned_start_send": "2021-12-29 07:52:00",
+ *    "date_planned_end_send": "2021-12-30 07:52:00"
+ * }
  */
 
 Route::post('/Mailing/AddMailing', 'API\Mailing\AddMailingController@addMailing');
