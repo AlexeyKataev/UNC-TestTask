@@ -2,7 +2,12 @@
 
 @section('content')
     <main class="container">
-        <h1 class="mt-5 mb-5 display-6">Активность пользователя: Id {{ @$user->id }}, Ф.И.О. {{ @$user->second_name }} {{ @$user->first_name }} {{ @$user->middle_name }}</h1>
+        <h1 class="mt-5 mb-5 display-6">
+            <a href="/Account/Accounts" role="button" class="btn btn-light">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            Активность пользователя: Id {{ @$user->id }}, Ф.И.О. {{ @$user->second_name }} {{ @$user->first_name }} {{ @$user->middle_name }}
+        </h1>
         <table class="table table-sm table-bordered">
             <thead class="table-light">
             <tr>

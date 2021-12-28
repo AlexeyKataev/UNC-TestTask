@@ -22,6 +22,10 @@ Route::post('/Account/Login', 'Auth\LoginController@authUser')->name('accountLog
 Route::get('/Account/Logout', 'Auth\LoginController@logoutUser')->name('logoutUser');
 Route::get('/Account/Accounts', 'Account\AccountsController@accountsView');
 Route::get('/Account/Activity/{id}', 'Account\ActivityController@activityView');
+Route::get('/Account/EditAccount/{id}', 'Account\EditAccountController@editAccountView');
+Route::put('/Account/EditAccount', 'Account\EditAccountController@editAccount')->name('editAccount');
+Route::put('/Account/EditAccount/addKeyAPI', 'Account\EditAccountController@addKeyAPI')->name('addKeyAPI');
+Route::put('/Account/EditAccount/removeKeyAPI', 'Account\EditAccountController@removeKeyAPI')->name('removeKeyAPI');
 
 Route::get('/Mailing/Mailings', 'Mailing\MailingsController@mailingsView');
 Route::get('/Mailing/HistoryMailings', 'Mailing\HistoryMailingsController@historyMailingsView');

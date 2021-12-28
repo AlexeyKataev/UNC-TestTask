@@ -114,7 +114,6 @@
                                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
                                         <li>
                                             <a class="dropdown-item text-light bg-danger" role="button" data-bs-toggle="modal" data-bs-target="#stopMailing{{ @$mail->id }}Modal">Остановить</a>
-
                                         </li>
                                     </ul>
                                 </div>
