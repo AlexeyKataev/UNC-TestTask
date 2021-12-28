@@ -38,6 +38,7 @@ Route::get('/Action/AddAction', 'Action\AddActionController@addActionView');
 Route::post('/Action/AddAction', 'Action\AddActionController@addAction')->name('addAction');
 Route::get('/Action/EditAction/{id}', 'Action\EditActionController@editActionView');
 Route::put('/Action/EditAction', 'Action\EditActionController@editAction')->name('editAction');
+Route::get('/Action/HistoryActions', 'Action\HistoryActionsController@historyActionsView');
 
 Route::get('/MailTemplate/MailTemplates', 'MailTemplate\MailTemplatesController@mailTemplatesView');
 Route::get('/MailTemplate/AddMailTemplate', 'MailTemplate\AddMailTemplateController@addMailTemplateView');

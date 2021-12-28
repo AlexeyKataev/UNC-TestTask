@@ -12,7 +12,7 @@ class AddMailingController extends Controller
     public function addMailing(Request $request)
     {
         $user = null;
-        //dd ($request);
+
         if (!empty($request->header('token')))
         {
             $user = User::where('api_access_token', $request->header('token'))->first();

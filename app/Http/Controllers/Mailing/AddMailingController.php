@@ -100,6 +100,10 @@ class AddMailingController extends Controller
                     $userTemp = User::where('api_access_token', $request->header('token'))->first();
                     $user_creator_id = $userTemp->id;
                 }
+                else
+                {
+                    $user_creator_id = Auth::id();
+                }
 
                 if ($request->user_category_id == 1)
                 {
@@ -184,6 +188,7 @@ class AddMailingController extends Controller
 
                         QueueEmail::create([
                             'user_id' => $user->id,
+                            'mailing_id' => $newQueueMail->id,
                             'generated_text' => $genText,
                             'time_planned_send' => date('Y-m-d H:i:s', strtotime($request->date_planned_start_send) + $timeIntervalTemp),
                         ]);

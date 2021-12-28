@@ -23,7 +23,7 @@
                         <h5 class="card-title">История акций</h5>
                         <p class="card-text mb-0">Завершённые акции: {{ $stoppedActionsCount }}</p>
                         <p class="card-text">Публичные / персональные: {{ $stoppedPublicActionsCount }} / {{ $stoppedPrivateActionsCount }}</p>
-                        <a href="#" class="btn btn-outline-primary">
+                        <a href="/Action/HistoryActions" class="btn btn-outline-primary">
                             <i class="bi bi-card-list"></i>
                             Перейти к истории акций
                         </a>

@@ -7,9 +7,6 @@
             <div class="col-sm-6">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Запланировано</h5>
-                        <p class="card-text mb-0">На сегодня запланировано рассылок: 1FDNJKNFDKJNKDJF</p>
-                        <p class="card-text">Будет охвачено пользователей: 114</p>
                         <a href="/Mailing/AddMailing" class="btn btn-primary">
                             <i class="bi bi-plus-square-dotted mr-3"></i>
                             Добавить рассылку
@@ -20,9 +17,6 @@
             <div class="col-sm-6">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">История рассылок</h5>
-                        <p class="card-text mb-0">За всё время проведено рассылок: 10</p>
-                        <p class="card-text">Было охвачено пользователей: 1239</p>
                         <a href="/Mailing/HistoryMailings" class="btn btn-outline-primary">
                             <i class="bi bi-card-list"></i>
                             Перейти к истории рассылок
@@ -45,7 +39,6 @@
                 <th>Завершение рассылки</th>
                 <th>Дата создан.</th>
                 <th>Дата изменен.</th>
-                <th style="min-width: 70px; max-width: 70px;"></th>
             </tr>
             </thead>
             <tbody>
@@ -86,38 +79,6 @@
                             <td>{{ @$mail->date_planned_end_send }}</td>
                             <td>{{ @$mail->created_at }}</td>
                             <td>{{ @$mail->updated_at }}</td>
-                            <td>
-                                <div class="modal fade" id="stopMailing{{ @$mail->id }}Modal" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <form method="post" action="{{ route('stopMailing') }}" class="modal-content">
-                                            {{ csrf_field() }}
-                                            {{ method_field('put') }}
-                                            <input type="hidden" name="id" value="{{ @$mail->id }}">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Остановка рассылки Id {{ @$mail->id }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Данную операцию в дальнейшем невозможно отменить
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Закрыть</button>
-                                                <button type="submit" class="btn btn-danger">Остановить рассылку</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownAdminButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownAdminButton">
-                                        <li>
-                                            <a class="dropdown-item text-light bg-danger" role="button" data-bs-toggle="modal" data-bs-target="#stopMailing{{ @$mail->id }}Modal">Остановить</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
                         </tr>
                     @endforeach
                 @endif

@@ -48,6 +48,11 @@ class RegisterController extends Controller
 
     public function addUser(Request $request)
     {
+        if (!$request->consent_to_the_processing_of_personal_data)
+        {
+            return redirect('/Account/Login');
+        }
+
         $this->validate($request, [
             'email' => 'required|string|email|max:100|unique:users',
             'second_name' => 'string|max:50',
@@ -58,7 +63,7 @@ class RegisterController extends Controller
 
         User::create([
             'email' => $request->email,
-            'role_id' => 3,     // Роль "пользователь"
+            'user_role_id' => 3,     // Роль "пользователь"
             'second_name' => $request->second_name,
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
